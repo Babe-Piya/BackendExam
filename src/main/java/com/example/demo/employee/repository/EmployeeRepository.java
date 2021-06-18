@@ -1,4 +1,4 @@
-package com.example.demo.repository;
+package com.example.demo.employee.repository;
 
 import com.example.demo.employee.mapper.EmployeeRowMapper;
 import com.example.demo.employee.model.Employee;
@@ -64,5 +64,32 @@ public class EmployeeRepository {
         } catch (Exception ex) {
             throw ex;
         }
+    }
+
+    public int deleteEmployee(int id) {
+        String sql = "delete from employee where id=?";
+        Object[] args = new Object[]{id};
+        try {
+            return jdbcTemplate.update(sql, args);
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
+
+    public int updateEmployee(int id, Employee employee) {
+        String sql = "update employee set name=? , email=? , position_job=? , salary=? where id=?";
+        Object[] args = new Object[]{
+                employee.getName(),
+                employee.getEmail(),
+                employee.getPositionJob(),
+                employee.getSalary(),
+                id
+        };
+        try {
+            return jdbcTemplate.update(sql, args);
+        } catch (Exception ex) {
+            throw ex;
+        }
+
     }
 }

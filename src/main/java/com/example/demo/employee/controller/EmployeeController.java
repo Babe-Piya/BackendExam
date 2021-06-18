@@ -6,9 +6,6 @@ import com.example.demo.employee.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
-import java.util.List;
-
 @RestController
 @RequestMapping(path = "api/v1/employee")
 public class EmployeeController {
@@ -24,14 +21,28 @@ public class EmployeeController {
         return employeeService.getAllEmployee();
     }
 
-    @GetMapping
+    @GetMapping(path = "/{id}")
     public Employee getEmployeeById(
-            @RequestParam(name = "id") int id) {
+            @PathVariable("id") int id) {
         return employeeService.getEmployeeById(id);
     }
 
     @PostMapping
-    public void addEmployee(@RequestBody Employee employee) {
+    public void addEmployee(
+            @RequestBody Employee employee) {
         employeeService.addEmployee(employee);
+    }
+
+    @DeleteMapping(path = "/delete/{id}")
+    public void delEmployeeById(
+            @PathVariable("id") int id) {
+        employeeService.deleteEmployeeById(id);
+    }
+
+    @PutMapping(path = "/update/{id}")
+    public void updateEmployee(
+            @PathVariable("id") int id,
+            @RequestBody Employee employee) {
+        employeeService.updateEmployee(id,employee);
     }
 }
