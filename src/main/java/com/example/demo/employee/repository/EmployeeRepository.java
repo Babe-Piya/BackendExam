@@ -33,7 +33,7 @@ public class EmployeeRepository {
         String sql = "select id, name, email, position_job, salary from employee where id = ?";
         Object[] args = new Object[]{id};
         try {
-            return jdbcTemplate.queryForObject(sql, args, new EmployeeRowMapper());
+            return jdbcTemplate.queryForObject(sql, new EmployeeRowMapper(), args);
         } catch (Exception ex) {
             throw ex;
         }
@@ -45,7 +45,7 @@ public class EmployeeRepository {
                 email
         };
         try {
-            return jdbcTemplate.queryForObject(sql, args, Integer.class);
+            return jdbcTemplate.queryForObject(sql, Integer.class, args);
         } catch (Exception ex) {
             throw ex;
         }

@@ -1,17 +1,10 @@
 package com.example.demo.employee.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class Employee {
-    //    @JsonProperty("id")
     private int id;
-    //    @JsonProperty("name")
     private String name;
-    //    @JsonProperty("positionJob")
     private String positionJob;
-    //    @JsonProperty("email")
     private String email;
-    //    @JsonProperty("salary")
     private float salary;
 
     public int getId() {
