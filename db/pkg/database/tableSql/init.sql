@@ -3,7 +3,7 @@ CREATE TABLE `employee`.`employee`
 `POSITION_JOB` VARCHAR(255) NOT NULL , `EMAIL` VARCHAR(255) NOT NULL ,
 `SALARY` FLOAT(10,2) NOT NULL  , PRIMARY KEY (`ID`));
 
-CREATE TABLE `employee`.`authenticationRequest`
+CREATE TABLE `employee`.`user`
 ( `USERNAME` VARCHAR(255) NOT NULL ,
 `PASSWORD` VARCHAR(255) NOT NULL , PRIMARY KEY (`USERNAME`));
 
@@ -12,4 +12,4 @@ INSERT INTO employee (NAME,POSITION_JOB,EMAIL,SALARY) values('Arnold AA','Tech l
 INSERT INTO employee (NAME,POSITION_JOB,EMAIL,SALARY) values('Bale GG','Dev','Bale@gmail.com',60000.00);
 INSERT INTO employee (NAME,POSITION_JOB,EMAIL,SALARY) values('Kaka R','Test','Kaka@gmail.com',50000.00);
 
-INSERT INTO authenticationRequest (USERNAME,PASSWORD) values('itzy','notshy');
+INSERT INTO user (USERNAME,PASSWORD) values('itzy','notshy');

@@ -12,6 +12,7 @@ import java.util.List;
 public class EmployeeRepository {
 
     private final JdbcTemplate jdbcTemplate;
+    String sqlSelect = "select id, name, email, position_job, salary from employee";
 
     @Autowired
     public EmployeeRepository(JdbcTemplate jdbcTemplate) {
@@ -19,10 +20,10 @@ public class EmployeeRepository {
     }
 
     public List<Employee> findAllEmployee() {
-        String sql = "select id, name, email, position_job, salary from employee";
+
 
         try {
-            return jdbcTemplate.query(sql, new EmployeeRowMapper());
+            return jdbcTemplate.query(sqlSelect, new EmployeeRowMapper());
 
         } catch (Exception ex) {
             throw ex;
@@ -30,7 +31,7 @@ public class EmployeeRepository {
     }
 
     public Employee findEmployeeById(int id) {
-        String sql = "select id, name, email, position_job, salary from employee where id = ?";
+        String sql = sqlSelect + " where id = ?";
         Object[] args = new Object[]{id};
         try {
             return jdbcTemplate.queryForObject(sql, new EmployeeRowMapper(), args);
