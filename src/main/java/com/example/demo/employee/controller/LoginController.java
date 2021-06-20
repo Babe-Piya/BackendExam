@@ -10,6 +10,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ public class LoginController {
     private AuthenticationManager authenticationManager;
     private UserService userService;
     private JwtUtil jwtTokenUtil;
+    private PasswordEncoder passwordEncoder;
 
     public LoginController(UserService userService, JwtUtil jwtTokenUtil) {
         this.userService = userService;
@@ -43,4 +45,5 @@ public class LoginController {
 
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
     }
+
 }

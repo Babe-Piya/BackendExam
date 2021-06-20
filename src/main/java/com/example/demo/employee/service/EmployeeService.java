@@ -31,6 +31,7 @@ public class EmployeeService {
         return employeeRepository.findEmployeeById(id);
     }
 
+    @Transactional
     public void addEmployee(Employee employee) {
         if (employeeRepository.findEmail(employee.getEmail()) > 0) {
             throw new IllegalStateException("Email used");
